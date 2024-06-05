@@ -80,7 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     label: '折れ線グラフ',
                     data: <?php echo json_encode(array_column($data_array, 'num')); ?>,
                     borderColor: 'rgb(255, 99, 132)',
-                    tension: 0.1
+                    tension: 0.1,
+                    backgroundColor: 'rgba(0,0,0,0)',
                 }]
             },
             // 縦軸の範囲の指定
