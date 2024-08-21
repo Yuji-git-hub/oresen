@@ -24,13 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $conn->close();
+
     } else {
 
 
     // if ($_SERVER['REQUEST_METHOD'] === 'get') {
-        
+
         $conn = new mysqli($servername, $username, $password, $dbname);
-        
+
         $sql = "SELECT * FROM `graph`";
         $result = mysqli_query($conn, $sql);
 
@@ -49,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-    
+
         $conn->close();
     }
 ?>
