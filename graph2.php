@@ -1,5 +1,5 @@
 <?php
-// データベースに接続する
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -9,12 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // 接続エラーがあるかどうかを確認する
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // POSTリクエストで送信されたデータをデータベースに挿入する
+
     $sql = "INSERT INTO graph (num) VALUES ('".$_POST["number"]."')";
 
     if ($conn->query($sql) === TRUE) {
@@ -26,27 +26,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 
     } else {
-
-
-    // if ($_SERVER['REQUEST_METHOD'] === 'get') {
-
         $conn = new mysqli($servername, $username, $password, $dbname);
 
         $sql = "SELECT * FROM `graph`";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
-            $data_array = []; // 空の配列を作成
+            $data_array = [];
             while ($row = mysqli_fetch_assoc($result)) {
-                $data_array[] = $row; // 配列に行のデータを追加
+                $data_array[] = $row;
             }
-            mysqli_free_result($result); // 結果セットを解放
+            mysqli_free_result($result);
         } else {
             echo 'クエリの実行に失敗しました。' . PHP_EOL;
         }
 
-
-        // 接続エラーがあるかどうかを確認する
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -85,13 +79,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     backgroundColor: 'rgba(0,0,0,0)',
                 }]
             },
-            // 縦軸の範囲の指定
             options: {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true, // 0から始める // 縦軸の最小値
-                            max: 100, // 縦軸の最大値
+                            beginAtZero: true, 
+                            max: 100,
                         }
                     }]
                 }
